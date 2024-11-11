@@ -6,7 +6,6 @@ class NetworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Network
         fields = '__all__'
-        read_only_fields = ['debt_to_supplier']
 
 
 class ProductSerializer(serializers.ModelSerializer):

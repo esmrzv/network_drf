@@ -21,6 +21,7 @@ class NetworkAdmin(admin.ModelAdmin):
                     'house_number',
                     'supplier_link',
                     )
+    list_filter = ('city',)
 
     def clear_debt(self, request, queryset):
         """
