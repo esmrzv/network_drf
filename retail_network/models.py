@@ -27,17 +27,17 @@ class Network(models.Model):
     Модель для представления звена сети.
     """
 
-    LEVELS = {
-        ("0", "Завод"),
-        ("1", "Розничная сеть"),
-        ("2", "Индивидуальный предприниматель"),
-    }
+    LEVELS = [
+        (0, "Завод"),
+        (1, "Розничная сеть"),
+        (2, "Индивидуальный предприниматель"),
+    ]
     name = models.CharField(max_length=50, verbose_name="название")
     email = models.EmailField(unique=True, verbose_name="почта")
     country = models.CharField(max_length=50, verbose_name="страна")
     city = models.CharField(max_length=50, verbose_name="город")
     street = models.CharField(max_length=100, verbose_name="улица")
-    house_number = PositiveIntegerField(max_length=10, verbose_name="номер дома")
+    house_number = PositiveIntegerField(verbose_name="номер дома")
     levels = models.IntegerField(choices=LEVELS, verbose_name="уровень сеть", null=True, blank=True)
     supplier = models.ForeignKey("self", verbose_name="поставщик", on_delete=models.SET_NULL, null=True, blank=True)
     debt_to_supplier = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, verbose_name="задолженность")
